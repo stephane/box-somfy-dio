@@ -339,7 +339,7 @@ bool mqtt_connect() {
     Serial.println("MQTT setup is done.");
     return true;
   } else {
-    Serial.print("Unable to connect to MQTT server (status code ");
+    Serial.print("\nUnable to connect to MQTT server (status code ");
     Serial.print(mqttClient.state());
     Serial.println("). Try again in 2 seconds...");
     // Wait 2 seconds before retrying
