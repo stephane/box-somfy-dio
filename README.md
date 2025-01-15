@@ -4,7 +4,9 @@
 
 Arduino program to control equipments via the protocol SOMFY RTS or Chacon DiO.
 
-This code has been tested on ESP8266 with the very simple electronic components:
+This code has been tested on ESP8266 with RF 433.42 Mhz transmitter. The
+transmitter commonly sold have a 433.92 MHz crystal. You can buy 433.42 Mhz
+crystal and change it with a bit of soldering.
 
 ## History
 
