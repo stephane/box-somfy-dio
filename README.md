@@ -28,7 +28,7 @@ Modified by Stéphane Raimbault, 11/2020:
 - MQTT Discovery for easy integration with Home Assistant
 - a cover can be associated to many groups
 - groups are exposed as remotes in Home Assistant
-- simpler configuration (no rolling code, EEPROM addresses, etc)
+- simpler configuration (no need to define rolling code, EEPROM addresses, etc)
 - no dynamic allocation in loop() to avoid memory fragmentation
 - faster code (remove many delays, fast path, pointers, pure string management, early return in functions)
 - removed useless Ticker

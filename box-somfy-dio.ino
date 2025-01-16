@@ -17,13 +17,13 @@ Original code https://github.com/Nickduino/Somfy_Remote Adapted by TOST Corp.
 - MQTT Discovery for easy integration with Home Assistant
 - a cover can be associated to many groups
 - groups are exposed as remotes in Home Assistant
-- simpler configuration (no rolling code, EEPROM addresses, etc)
+- simpler configuration (no need to define rolling code, EEPROM addresses, etc)
 - no dynamic allocation in loop() to avoid memory fragmentation
 - faster code (remove many delays, fast path, pointers, pure string management,
   early return in functions)
 - removed useless Ticker
 - comments in english
-- don't code to publish set up on weird server
+- remove code to publish set up on weird server
 - remove publishing of every handled commands on MQTT box topic
 - DRY on many parts of the code
 - common hostname/MQTT ID/MQTT topic for the box generated from MAC address The
@@ -154,7 +154,7 @@ remote_t *get_remotes() {
   int nb_dio_remotes =
       get_nb_items(sizeof(DIO_CONFIG_REMOTES), sizeof(dio_config_remote_t));
   Serial.print(nb_dio_remotes);
-  Serial.println(" Dio remotes");
+  Serial.println(" DiO remotes");
 
   int nb_dio_groups =
       get_nb_items(sizeof(DIO_CONFIG_GROUPS), sizeof(config_group_t));
@@ -493,7 +493,7 @@ void build_frame(byte *frame, byte button, const remote_t *remote) {
   frame[0] = 0xA7; // Encryption key. Doesn't matter much
   frame[1] =
       button
-      << 4; // Which button did  you press? The 4 LSB will be the checksum
+      << 4; // Which button did you press? The 4 LSB will be the checksum
   frame[2] = code >> 8;        // Rolling code (big endian)
   frame[3] = code;             // Rolling code
   frame[4] = remote->id >> 16; // Remote address

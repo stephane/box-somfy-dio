@@ -27,11 +27,7 @@ struct remote_t {
   RemoteType type;
   bool is_group;
   unsigned int id;
-  // Pointer to somfy_config_remote_t or somfy_config_group_t field (not
-  // allocated)
   const char *mqtt_topic_base;
-  // Pointer to somfy_config_remote_t or somfy_config_group_t field (not
-  // allocated)
   const char *description;
   char *mqtt_topic_set;
   char *mqtt_topic_state;
