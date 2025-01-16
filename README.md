@@ -8,6 +8,34 @@ This code has been tested on ESP8266 with RF 433.42 Mhz transmitter. The
 transmitter commonly sold have a 433.92 MHz crystal. You can buy 433.42 Mhz
 crystal and change it with a bit of soldering.
 
+The program connects to the Wi-Fi network to communicate with your
+installation's MQTT server. The ESP's serial port displays information or
+debugging messages.
+
+## Compilation and upload in ESP8266
+
+Copy the file `config-default.h` to `config.h` and edit it for your settings (
+
+In the Arduino IDE, add support for the board:
+
+1. `File > Preferences`
+2. in field `Additional Boards Manager URLs`: `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
+3. in the menu `Tools > Board > Boards manager`, install the board ESP8266 [version 2.4.1 to have the board WeMos D1 R2 & mini]. Don't use the last version 2.7.4!
+4. select the board WeMos D1 R2 & mini ou LOLIN (WEMOS) D1 R2 & mini.
+5. select the Port and speed 115200 bauds of the serial monitor.
+
+## How to pair a SOMFY cover
+
+After downloading the code in your box:
+
+1. Press the PROG button on the remote control of one of the your equipment, the
+   shutter will make a back and forth movement up/down
+2. Send a "p" message to the MQTT server with the corresponding topic to the
+equipment
+3. Send a "u", "d" or "s" message to raise, lower or stop the shutter.
+
+The rolling code value is stored in the EEPROM, so that you don't loose count of your rolling code after a power off or reset.
+
 ## History
 
 The code is based on the reverse engineering described in <https://pushstack.wordpress.com/somfy-rts-protocol/>.
@@ -41,27 +69,3 @@ Modified by Stéphane Raimbault, 11/2020:
 ## License
 
 [License CC BY NC SA](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-
-## Compilation and upload in ESP8266
-
-Copy the file `config-default.h` to `config.h` and edit it for your settings.
-
-In the Arduino IDE, add support for the board:
-
-1. `File > Preferences`
-2. in field `Additional Boards Manager URLs`: `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
-3. in the menu `Tools > Board > Boards manager`, install the board ESP8266 [version 2.4.1 to have the board WeMos D1 R2 & mini]. Don't use the last version 2.7.4!
-4. select the board WeMos D1 R2 & mini ou LOLIN (WEMOS) D1 R2 & mini.
-5. select the Port and speed 115200 bauds of the serial monitor.
-
-## How to pair a SOMFY cover
-
-After downloading the code in your box:
-
-1. Press the PROG button on the remote control of one of the your equipment, the
-   shutter will make a back and forth movement up/down
-2. Send a "p" message to the MQTT server with the corresponding topic to the
-equipment
-3. Send a "u", "d" or "s" message to raise, lower or stop the shutter.
-
-The rolling code value is stored in the EEPROM, so that you don't loose count of your rolling code after a power off or reset.

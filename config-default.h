@@ -11,9 +11,10 @@
 //
 // ---------------------------------
 // 1. mqtt_topic_base
-//    It should be prefixed by the MQTT discovery prefix of Home Assistant to expose the device, eg.
-//    "somfy/kitchen" -> "homeassistant/cover/somfy/kitchen"
-//    The command should be sent to <topic>/set and state will be stored at <topic>/state
+//    It should be prefixed by the MQTT discovery prefix of Home Assistant to
+//    expose the device, eg. "somfy/kitchen" -> "homeassistant/cover/somfy/kitchen"
+//    The command should be sent to <topic>/set and state will be stored at
+//    <topic>/state.
 // 2. Name of the cover
 //
 
@@ -25,7 +26,7 @@ const somfy_config_remote_t SOMFY_CONFIG_REMOTES[] = {
 };
 
 
-// Final index should be -1;
+// First value 0 for Kitchen, 1 for Desktop and final index should be -1;
 const int main_group_indexes[] = {0, 1, -1};
 const config_group_t SOMFY_CONFIG_GROUPS[] = {
     {"homeassistant/cover/group/main", "All", main_group_indexes}
